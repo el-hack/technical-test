@@ -5,7 +5,7 @@ The architecture used is DDH (Domain Driven Hexagonal).
 
 # API
 
-For the API, you'll use the NestJS framework
+For the API, you'll use the `NestJS` framework
 
 ### Nestjs Structure    
 
@@ -20,7 +20,7 @@ For the API, you'll use the NestJS framework
 
 ### Docker
 
-You need to dockerize the project, by creating these two files `Dockerfile` and `docker-compose.yml`
+You need to **dockerize** the project, by creating these two files `Dockerfile` and `docker-compose.yml`
 
 ### Expected Endpoint
 
@@ -37,15 +37,35 @@ Sequence diagrams are encouraged to describe your chosen approach, other than th
 
 ### Configuration
 
-Replace `NestJS` express to fastify and configure `compression`
+Replace `NestJS` express to **fastify** and configure **compression**
 
 ### Approach
 
 The use of `CQRS` is a plus in this exercise
 
+***
+
 # Client
 
+You'll use the `NextJS` framework.
+The client application is for internal use only. 
+You must use a `clean architecture` for this exercise.
+
+### Docker
+
+You need to **dockerize** the project, by creating these two files `Dockerfile` and `docker-compose.yml`
+
+### Library
+
+use [shadcn/ui](https://ui.shadcn.com/)
+
+***
+
 # Mobile
+
+### Flutter Structure
+
+For the Mobile, you'll use the `Flutter` framework
 
 ### Flutter Structure
 
@@ -57,3 +77,27 @@ The use of `CQRS` is a plus in this exercise
 ├── infrastructure
 └── interface
 ```
+
+### Dependencies
+
+- Get it
+- BLoc
+- Hive
+- Equatable
+- Auto route
+- Dio
+
+### Expected
+
+Your application must be able to list and update transactions. 
+We want you to know that the mobile application is intended for simple consumers.
+
+***
+
+## Bonus
+
+- Test writing is strongly encouraged (Unit, acceptance).
+- Setting up an authentication system for each project
+- The installation of caches is highly recommended.
+
+**NB: There may be a trap.**
