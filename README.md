@@ -3,7 +3,7 @@
 Our stack is essentially based on Dart, Typescript, Postgres for the database and Redis for the cache.
 The architecture used is DDH (Domain Driven Hexagonal).
 
-## API
+# API
 
 For the API, you'll use the NestJS framework
 
@@ -43,9 +43,9 @@ Replace `NestJS` express to fastify and configure `compression`
 
 The use of `CQRS` is a plus in this exercise
 
-## Client
+# Client
 
-## Mobile
+# Mobile
 
 ### Flutter Structure
 
