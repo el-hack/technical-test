@@ -5,7 +5,9 @@ The architecture used is DDH (Domain Driven Hexagonal).
 
 # API
 
-For the API, you'll use the `NestJS` framework
+For the API, you'll use the `NestJS` framework.
+
+However, you can use the **framework** or **language** that suits you best.
 
 ### Nestjs Structure    
 
