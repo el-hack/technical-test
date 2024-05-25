@@ -1,4 +1,4 @@
-import Transaction from "src/core/domain/transaction";
+import Transaction from "src/core/domain/entities/transaction.entity";
 import { TransactionEntity } from "../adapters/entity/transaction.entity";
 
 export default class TransactionMapper {

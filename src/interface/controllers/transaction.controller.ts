@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Param, Post } from "@nestjs/common";
-import { TransactionRepositoryTypeOrm } from "../adapters/repositories/transaction.repository.typeorm";
-import Transaction from "src/core/domain/transaction";
-import CreateTransactionDto from "../adapters/dto/create-transaction.dto";
+import { TransactionRepositoryTypeOrm } from "src/infrastructure/adapters/repositories/transaction.repository.typeorm";
+import CreateTransactionDto from "src/interface/dto/create-transaction.dto";
 
 @Controller('transactions')
 export class TransactionController { 
@@ -34,7 +33,7 @@ export class TransactionController {
     }
 
     @Get('update/:id')
-    async update(@Param('id') id: number, @Body() transaction: Transaction){
+    async update(@Param('id') id: number, @Body() transaction: any){
         return this.transactionRepository.update(transaction);
     }
 }

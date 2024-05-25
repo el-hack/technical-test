@@ -1,4 +1,4 @@
-import Transaction from "../transaction";
+import Transaction from "../entities/transaction.entity";
 
 export interface TransactionRepository {
     save(transaction: Transaction): Promise<Transaction>;
@@ -13,3 +13,4 @@ export interface TransactionRepository {
 
     count(): Promise<number>
 }
+ 

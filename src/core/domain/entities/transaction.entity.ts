@@ -1,9 +1,9 @@
 export default class Transaction {
     private id?: number;
-     readonly amount: number;
-     readonly description: string;
-     readonly type: string;
-      created_at?: Date;
+    readonly amount: number;
+    readonly description: string;
+    readonly type: string;
+    created_at?: Date;
     constructor(
         amount: number,
         description: string,

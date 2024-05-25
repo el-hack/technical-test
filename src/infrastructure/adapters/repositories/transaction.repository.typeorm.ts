@@ -1,10 +1,10 @@
 import { Injectable } from "@nestjs/common";
 import { TransactionEntity } from "../entity/transaction.entity";
-import { TransactionRepository } from "src/core/domain/ports/transaction.repository";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import TransactionMapper from "src/infrastructure/mappers/transaction.mapper";
-import Transaction from "src/core/domain/transaction";
+import Transaction from "src/core/domain/entities/transaction.entity";
+import { TransactionRepository } from "src/core/domain/ports/transaction.repository";
 
 @Injectable()
 export class TransactionRepositoryTypeOrm implements TransactionRepository {
@@ -18,7 +18,10 @@ export class TransactionRepositoryTypeOrm implements TransactionRepository {
         return TransactionMapper.toDomain(transactionCreated);
     }
     public async findOne(id: number): Promise<Transaction | null> {
-        const transaction = await this.repository.findOne({where: {id: id}});
+        const transaction = await this.repository.findOne({ where: { id: id } });
+        if (!transaction) {
+            throw new Error("Transaction not found");
+        }
         return transaction ? TransactionMapper.toDomain(transaction) : null
     }
    public async findAll(): Promise<Transaction[]> {

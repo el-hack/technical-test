@@ -17,11 +17,12 @@ COPY . /app/
 # Installation des dépendances avec pnpm
 RUN pnpm install
 
+# Compilation de l'application
+RUN pnpm build
 
-
+# Exposition du port 3000
 EXPOSE 3000
 
 
-
 # Commande pour démarrer l'application Nest.js
-CMD [ "pnpm", "start:dev" ]
+CMD [ "pnpm", "start:prod" ]
