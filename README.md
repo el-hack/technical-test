@@ -1,4 +1,4 @@
-# Buicorporation's take-home test for Full Stack Engineer
+# Buicorporation's take-home test for SWE (Software Engineer)
 
 Our stack is essentially based on Dart, Typescript, Postgres for the database and Redis for the cache.
 The architecture used is DDH (Domain Driven Hexagonal).
