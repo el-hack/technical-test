@@ -1,5 +1,7 @@
+import internal from "stream"
+
 export default class User{
-    private id?: number
+     id?: number
     readonly name: string
     readonly email: string
     readonly password: string
@@ -17,4 +19,14 @@ export default class User{
         this.password = password
         this.created_at = created_at
     }
+
+   public generateNewId() {
+        return Math.random().toString(36).substring(2, 9)
+    }
+}
+
+export interface UserPayload {
+    name: string
+    email: string
+    password: string
 }

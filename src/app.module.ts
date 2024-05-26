@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { InfrastructureModule } from './infrastructure/transaction.module';
 import { typeOrmConfig } from './infrastructure/database/typeorm.config';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TransactionModule } from './infrastructure/modules/transaction.module';
 @Module({
   imports: [
     ConfigModule.forRoot({isGlobal: true,}),
@@ -13,7 +13,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       useFactory: async (configService: ConfigService) => typeOrmConfig(configService),
       inject: [ConfigService],
     }),
-    InfrastructureModule
+    TransactionModule
   ],
   controllers: [AppController],
   providers: [AppService],
