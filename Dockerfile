@@ -21,8 +21,8 @@ RUN pnpm install
 RUN pnpm build
 
 # Exposition du port 3000
-EXPOSE 3000
+EXPOSE 3333
 
 
 # Commande pour démarrer l'application Nest.js
-CMD [ "pnpm", "start:prod" ]
+CMD [ "pnpm", "start:dev" ]

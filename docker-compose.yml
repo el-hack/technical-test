@@ -3,13 +3,24 @@ services:
   api:
     build: .
     ports:
-      - "3000:3000"
+      - "3333:3333"
     volumes:
       - .:/usr/src/app
-    networks:
-      - default
+    env_file:
+      - .env
     depends_on:
       - postgres
+  
+  # client:
+  #   build: ./client
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./client:/usr/src/app
+  #   networks:
+  #     - default
+  #   depends_on:
+  #     - api
 
   postgres:
     image: postgres
@@ -18,10 +29,5 @@ services:
       POSTGRES_PASSWORD: root
       POSTGRES_DB: test
     restart: always
-    networks:
-      - default
     ports:
       - 5432:5432
-
-networks:
-  default:

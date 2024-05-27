@@ -1,13 +1,16 @@
-import { Column, Entity, EntitySchema, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, EntitySchema, Generated, PrimaryGeneratedColumn } from "typeorm";
 
 // create entity for transaction
 @Entity()
 export class TransactionEntity {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('increment')
     id: number;
 
     @Column()
     amount: number;
+
+    @Column()
+    status: string;
 
     @Column()
     description: string;

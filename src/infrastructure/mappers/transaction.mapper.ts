@@ -7,7 +7,9 @@ export default class TransactionMapper {
             transactionEntity.amount,
             transactionEntity.description,
             transactionEntity.type,
+            transactionEntity.status,
             transactionEntity.created_at,
+            transactionEntity.id,
         )
 
         transaction.setCreatedAt(new Date(transactionEntity.created_at))
@@ -20,7 +22,9 @@ export default class TransactionMapper {
 
     public static toEntity(transaction: Transaction): TransactionEntity {
         const transactionEntity = new TransactionEntity()
+        transactionEntity.id = transaction.id
         transactionEntity.amount = transaction.amount
+        transactionEntity.status = transaction.status
         transactionEntity.description = transaction.description
         transactionEntity.type = transaction.type
         transactionEntity.created_at = transaction.created_at

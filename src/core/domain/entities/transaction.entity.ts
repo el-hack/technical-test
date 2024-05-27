@@ -1,13 +1,15 @@
 export default class Transaction {
-    private id?: number;
+     id?: number;
     readonly amount: number;
     readonly description: string;
     readonly type: string;
+    readonly status: string;
     created_at?: Date;
     constructor(
         amount: number,
         description: string,
         type: string,
+        status: string,
         created_at?: Date,
         id?: number,
     ) {
@@ -15,6 +17,7 @@ export default class Transaction {
         this.amount = amount;
         this.description = description;
         this.type = type;
+        this.status = status;
         this.created_at = created_at;
     }
 
@@ -29,6 +32,7 @@ export default class Transaction {
     public setCreatedAt(createdAt: Date): void {
         this.created_at = createdAt
     }
+
 }
 
 // create interface for transaction

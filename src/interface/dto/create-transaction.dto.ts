@@ -7,6 +7,9 @@ export default class CreateTransactionDto extends Transaction{
 
     @IsNotEmpty()
     description: string;
+
+    @IsNotEmpty()
+    status: string;
     
     @IsNotEmpty()
     type: string;

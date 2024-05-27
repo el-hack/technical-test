@@ -7,9 +7,9 @@ export interface TransactionRepository {
 
     findAll(): Promise<Transaction[]>
 
-    delete(id: string): Promise<void>
+    delete(id: number): Promise<boolean>
 
-    update(transaction: Transaction): Promise<Transaction>
+    update(id: number, transaction: Transaction): Promise<Transaction>
 
     count(): Promise<number>
 }

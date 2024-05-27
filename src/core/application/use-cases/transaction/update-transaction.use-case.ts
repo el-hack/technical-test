@@ -1,11 +1,13 @@
 import { Inject, Injectable } from "@nestjs/common";
+import Transaction from "src/core/domain/entities/transaction.entity";
 import { TransactionRepository } from "src/core/domain/ports/transaction.repository";
+import { InjectionToken } from "../../InjectionToken";
 
 @Injectable()
 export class UpdateTransactionsUseCase {
-    constructor(@Inject('TransactionRepository') private readonly transactionRepository: TransactionRepository) { }
+    constructor(@Inject(InjectionToken.TRANSACTION_REPOSITORY) private readonly transactionRepository: TransactionRepository) { }
 
-    async execute(transaction: any) {
-        return this.transactionRepository.update(transaction);
+    async execute(id: number, transaction: Transaction) {
+        return this.transactionRepository.update(id, transaction);
     }
 }

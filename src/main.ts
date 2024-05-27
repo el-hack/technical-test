@@ -14,6 +14,7 @@ async function bootstrap() {
     new FastifyAdapter(),)
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   await app.register(compression);
+  app.enableCors();
   await app.listen(process.env.PORT, '0.0.0.0');
 }
 bootstrap();
