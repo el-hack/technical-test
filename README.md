@@ -40,25 +40,6 @@ Ceci est une API simple pour gérer les transactions en utilisant NestJS, Postgr
 
 ### Example Sequence Diagram
 
-
-```mermaid
-sequenceDiagram
-
-   actor User
-   participant Controller
-   participant CommandBus
-   participant CreateTransactionUseCase
-   participant CreateTransactionHandler
-   participant TransactionRepository
-
-    User->>Controller: POST /transactions
-    API->>Service: Create Transaction
-    Service->>Database: Insert Transaction
-    Database-->>Service: Transaction Created
-    Service-->>API: Transaction Created
-    API-->>Client: 201 Created
-
-
 ```mermaid
 sequenceDiagram
 
