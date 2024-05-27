@@ -40,151 +40,172 @@ Ceci est une API simple pour gérer les transactions en utilisant NestJS, Postgr
 
 ### Example Sequence Diagram
 
+
 ```mermaid
-Diagramme de Séquence pour la Création d'une Transaction
+sequenceDiagram
 
-@startuml
-actor User
-participant Controller
-participant CommandBus
-participant CreateTransactionUseCase
-participant CreateTransactionHandler
-participant TransactionRepository
+   actor User
+   participant Controller
+   participant CommandBus
+   participant CreateTransactionUseCase
+   participant CreateTransactionHandler
+   participant TransactionRepository
 
-User -> Controller: POST /transactions
-activate Controller
-Controller -> CommandBus: execute(CreateTransactionCommand)
-activate CommandBus
-CommandBus -> CreateTransactionHandler: execute(CreateTransactionCommand)
-activate CreateTransactionHandler
-CreateTransactionHandler -> CreateTransactionUseCase: execute(CreateTransactionCommand)
-activate CreateTransactionUseCase
-CreateTransactionUseCase -> TransactionRepository: createTransaction()
-activate TransactionRepository
-TransactionRepository --> CreateTransactionUseCase: transaction created
-deactivate TransactionRepository
-CreateTransactionUseCase --> CreateTransactionHandler: transaction created
-deactivate CreateTransactionUseCase
-CreateTransactionHandler --> CommandBus: void
-deactivate CreateTransactionHandler
-CommandBus --> Controller: void
-deactivate CommandBus
-Controller --> User: 201 Created
-deactivate Controller
-@enduml
+    User->>Controller: POST /transactions
+    API->>Service: Create Transaction
+    Service->>Database: Insert Transaction
+    Database-->>Service: Transaction Created
+    Service-->>API: Transaction Created
+    API-->>Client: 201 Created
 
 
+```mermaid
+sequenceDiagram
 
-Diagramme de Séquence pour la Récupération de Toutes les Transactions
+   actor User
+   participant Controller
+   participant CommandBus
+   participant CreateTransactionUseCase
+   participant CreateTransactionHandler
+   participant TransactionRepository
 
-@startuml
-actor User
-participant Controller
-participant QueryBus
-participant GetAllTransactionsQuery
-participant GetAllTransactionsHandler
-participant TransactionRepository
+   User -> Controller: POST /transactions
+   activate Controller
+   Controller -> CommandBus: execute(CreateTransactionCommand)
+   activate CommandBus
+   CommandBus -> CreateTransactionHandler: execute(CreateTransactionCommand)
+   activate CreateTransactionHandler
+   CreateTransactionHandler -> CreateTransactionUseCase: execute(CreateTransactionCommand)
+   activate CreateTransactionUseCase
+   CreateTransactionUseCase -> TransactionRepository: createTransaction()
+   activate TransactionRepository
+   TransactionRepository --> CreateTransactionUseCase: transaction created
+   deactivate TransactionRepository
+   CreateTransactionUseCase --> CreateTransactionHandler: transaction created
+   deactivate CreateTransactionUseCase
+   CreateTransactionHandler --> CommandBus: void
+   deactivate CreateTransactionHandler
+   CommandBus --> Controller: void
+   deactivate CommandBus
+   Controller --> User: 201 Created
+   deactivate Controller
+```
 
-User -> Controller: GET /transactions
-activate Controller
-Controller -> QueryBus: execute(GetAllTransactionsQuery)
-activate QueryBus
-QueryBus -> GetAllTransactionsHandler: execute(GetAllTransactionsQuery)
-activate GetAllTransactionsHandler
-GetAllTransactionsHandler -> TransactionRepository: findAll()
-activate TransactionRepository
-TransactionRepository --> GetAllTransactionsHandler: transactions found
-deactivate TransactionRepository
-GetAllTransactionsHandler --> QueryBus: transactions found
-deactivate GetAllTransactionsHandler
-QueryBus --> Controller: transactions
-deactivate QueryBus
-Controller --> User: 200 OK
-deactivate Controller
-@enduml
+## Diagramme de Séquence pour la Récupération de Toutes les Transactions
 
+```mermaid
+sequenceDiagram
 
-Diagramme de Séquence pour la Mise à Jour d'une Transaction
+   actor User
+   participant Controller
+   participant QueryBus
+   participant GetAllTransactionsQuery
+   participant GetAllTransactionsHandler
+   participant TransactionRepository
 
-@startuml
-actor User
-participant Controller
-participant CommandBus
-participant UpdateTransactionUseCase
-participant UpdateTransactionHandler
-participant TransactionRepository
+   User -> Controller: GET /transactions
+   activate Controller
+   Controller -> QueryBus: execute(GetAllTransactionsQuery)
+   activate QueryBus
+   QueryBus -> GetAllTransactionsHandler: execute(GetAllTransactionsQuery)
+   activate GetAllTransactionsHandler
+   GetAllTransactionsHandler -> TransactionRepository: findAll()
+   activate TransactionRepository
+   TransactionRepository --> GetAllTransactionsHandler: transactions found
+   deactivate TransactionRepository
+   GetAllTransactionsHandler --> QueryBus: transactions found
+   deactivate GetAllTransactionsHandler
+   QueryBus --> Controller: transactions
+   deactivate QueryBus
+   Controller --> User: 200 OK
+   deactivate Controller
+```
 
-User -> Controller: PUT /transactions/:id
-activate Controller
-Controller -> CommandBus: execute(UpdateTransactionCommand)
-activate CommandBus
-CommandBus -> UpdateTransactionHandler: execute(UpdateTransactionCommand)
-activate UpdateTransactionHandler
-UpdateTransactionHandler -> UpdateTransactionUseCase: execute(UpdateTransactionCommand)
-activate UpdateTransactionUseCase
-UpdateTransactionUseCase -> TransactionRepository: updateTransaction()
-activate TransactionRepository
-TransactionRepository --> UpdateTransactionUseCase: transaction updated
-deactivate TransactionRepository
-UpdateTransactionUseCase --> UpdateTransactionHandler: transaction updated
-deactivate UpdateTransactionUseCase
-UpdateTransactionHandler --> CommandBus: void
-deactivate UpdateTransactionHandler
-CommandBus --> Controller: void
-deactivate CommandBus
-Controller --> User: 200 OK
-deactivate Controller
-@enduml
+## Diagramme de Séquence pour la Mise à Jour d'une Transaction
 
+```mermaid
+sequenceDiagram
 
-Diagramme de Séquence pour la Suppression d'une Transaction
+   actor User
+   participant Controller
+   participant CommandBus
+   participant UpdateTransactionUseCase
+   participant UpdateTransactionHandler
+   participant TransactionRepository
 
-@startuml
-actor User
-participant Controller
-participant CommandBus
-participant DeleteTransactionUseCase
-participant DeleteTransactionHandler
-participant TransactionRepository
+   User -> Controller: PUT /transactions/:id
+   activate Controller
+   Controller -> CommandBus: execute(UpdateTransactionCommand)
+   activate CommandBus
+   CommandBus -> UpdateTransactionHandler: execute(UpdateTransactionCommand)
+   activate UpdateTransactionHandler
+   UpdateTransactionHandler -> UpdateTransactionUseCase: execute(UpdateTransactionCommand)
+   activate UpdateTransactionUseCase
+   UpdateTransactionUseCase -> TransactionRepository: updateTransaction()
+   activate TransactionRepository
+   TransactionRepository --> UpdateTransactionUseCase: transaction updated
+   deactivate TransactionRepository
+   UpdateTransactionUseCase --> UpdateTransactionHandler: transaction updated
+   deactivate UpdateTransactionUseCase
+   UpdateTransactionHandler --> CommandBus: void
+   deactivate UpdateTransactionHandler
+   CommandBus --> Controller: void
+   deactivate CommandBus
+   Controller --> User: 200 OK
+   deactivate Controller
+```
 
-User -> Controller: DELETE /transactions/:id
-activate Controller
-Controller -> CommandBus: execute(DeleteTransactionCommand)
-activate CommandBus
-CommandBus -> DeleteTransactionHandler: execute(DeleteTransactionCommand)
-activate DeleteTransactionHandler
-DeleteTransactionHandler -> DeleteTransactionUseCase: execute(DeleteTransactionCommand)
-activate DeleteTransactionUseCase
-DeleteTransactionUseCase -> TransactionRepository: deleteTransaction()
-activate TransactionRepository
-TransactionRepository --> DeleteTransactionUseCase: transaction deleted
-deactivate TransactionRepository
-DeleteTransactionUseCase --> DeleteTransactionHandler: transaction deleted
-deactivate DeleteTransactionUseCase
-DeleteTransactionHandler --> CommandBus: void
-deactivate DeleteTransactionHandler
-CommandBus --> Controller: void
-deactivate CommandBus
-Controller --> User: 204 No Content
-deactivate Controller
-@enduml
+## Diagramme de Séquence pour la Suppression d'une Transaction
 
+```mermaid
+sequenceDiagram
 
-Diagramme de Séquence pour la Recherche d'une Transaction par ID
-@startuml
-actor User
-participant Controller
-participant TransactionRepository
+   actor User
+   participant Controller
+   participant CommandBus
+   participant DeleteTransactionUseCase
+   participant DeleteTransactionHandler
+   participant TransactionRepository
 
-User -> Controller: GET /transactions/:id
-activate Controller
-Controller -> TransactionRepository: findOne(id)
-activate TransactionRepository
-TransactionRepository --> Controller: transaction found
-deactivate TransactionRepository
-Controller --> User: 200 OK
-deactivate Controller
-@enduml
+   User -> Controller: DELETE /transactions/:id
+   activate Controller
+   Controller -> CommandBus: execute(DeleteTransactionCommand)
+   activate CommandBus
+   CommandBus -> DeleteTransactionHandler: execute(DeleteTransactionCommand)
+   activate DeleteTransactionHandler
+   DeleteTransactionHandler -> DeleteTransactionUseCase: execute(DeleteTransactionCommand)
+   activate DeleteTransactionUseCase
+   DeleteTransactionUseCase -> TransactionRepository: deleteTransaction()
+   activate TransactionRepository
+   TransactionRepository --> DeleteTransactionUseCase: transaction deleted
+   deactivate TransactionRepository
+   DeleteTransactionUseCase --> DeleteTransactionHandler: transaction deleted
+   deactivate DeleteTransactionUseCase
+   DeleteTransactionHandler --> CommandBus: void
+   deactivate DeleteTransactionHandler
+   CommandBus --> Controller: void
+   deactivate CommandBus
+   Controller --> User: 204 No Content
+   deactivate Controller
+```
+
+## Diagramme de Séquence pour la Recherche d'une Transaction par ID
+
+```mermaid
+sequenceDiagram
+
+   actor User
+   participant Controller
+   participant TransactionRepository
+
+   User -> Controller: GET /transactions/:id
+   activate Controller
+   Controller -> TransactionRepository: findOne(id)
+   activate TransactionRepository
+   TransactionRepository --> Controller: transaction found
+   deactivate TransactionRepository
+   Controller --> User: 200 OK
+   deactivate Controller
 ```
 
 
