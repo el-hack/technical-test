@@ -38,7 +38,7 @@ Ceci est une API simple pour gérer les transactions en utilisant NestJS, Postgr
 - Créer des diagrammes de séquence pour décrire le flux de l'application, notamment pour l'implémentation du CQRS.
 - Document your code as you go, explaining the purpose of each module, controller, and service.
 
-### Example Sequence Diagram
+### Diagramme de Séquence pour créer une transaction
 
 ```mermaid
 sequenceDiagram
@@ -72,7 +72,7 @@ sequenceDiagram
    deactivate Controller
 ```
 
-## Diagramme de Séquence pour la Récupération de Toutes les Transactions
+### Diagramme de Séquence pour la Récupération de Toutes les Transactions
 
 ```mermaid
 sequenceDiagram
@@ -102,7 +102,7 @@ sequenceDiagram
    deactivate Controller
 ```
 
-## Diagramme de Séquence pour la Mise à Jour d'une Transaction
+### Diagramme de Séquence pour la Mise à Jour d'une Transaction
 
 ```mermaid
 sequenceDiagram
@@ -136,7 +136,7 @@ sequenceDiagram
    deactivate Controller
 ```
 
-## Diagramme de Séquence pour la Suppression d'une Transaction
+### Diagramme de Séquence pour la Suppression d'une Transaction
 
 ```mermaid
 sequenceDiagram
@@ -170,7 +170,7 @@ sequenceDiagram
    deactivate Controller
 ```
 
-## Diagramme de Séquence pour la Recherche d'une Transaction par ID
+### Diagramme de Séquence pour la Recherche d'une Transaction par ID
 
 ```mermaid
 sequenceDiagram
