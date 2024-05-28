@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
       ),
       body: MultiBlocProvider(
           providers: [
-            BlocProvider(create: (context) => TransactionBloc()),
+            // BlocProvider(create: (context) => TransactionBloc()),
           ],
           child: Container(
             padding: const EdgeInsets.all(20),
