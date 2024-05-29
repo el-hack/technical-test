@@ -38,7 +38,7 @@ class RegisterUserNamePage extends StatelessWidget {
                 label: 'Suivant',
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const HomePage()),
+                    MaterialPageRoute(builder: (context) =>  HomePage()),
                   );
                 }),
           ],

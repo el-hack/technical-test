@@ -7,27 +7,35 @@ sealed class TransactionEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadTransactions extends TransactionEvent {
-  final List<Transaction> transactions;
-  const LoadTransactions({required this.transactions});
+class OnInitializeTransaction extends TransactionEvent {
+  const OnInitializeTransaction();
+  @override
+  List<Object> get props => [];
+}
 
+class LoadTransactions extends TransactionEvent {
   @override
   List<Object> get props => [];
 }
 
 
-class CreateTransaction extends TransactionEvent {
+class CreateTransactionEvent extends TransactionEvent {
   final Transaction transaction;
-  CreateTransaction(this.transaction);
+  const CreateTransactionEvent(this.transaction);
+
+  @override
+  List<Object> get props => [transaction];
 }
 
-class UpdateTransaction extends TransactionEvent {
+
+
+class UpdateTransactionEvent extends TransactionEvent {
   final int id;
   final Transaction transaction;
-  UpdateTransaction(this.id, this.transaction);
+  const UpdateTransactionEvent(this.id, this.transaction);
 }
 
-class DeleteTransaction extends TransactionEvent {
+class DeleteTransactionEvent extends TransactionEvent {
   final int id;
-  DeleteTransaction(this.id);
+  const DeleteTransactionEvent(this.id);
 }

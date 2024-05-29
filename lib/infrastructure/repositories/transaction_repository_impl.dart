@@ -1,37 +1,31 @@
 import 'package:buimobile/core/domain/repositories/transaction_repository.dart';
-import 'package:dio/dio.dart';
 
 import '../../core/domain/entities/transaction.dart';
+import '../data_sources/remote_data_source.dart';
 
 class TransactionRepositoryImpl implements TransactionRepository{
-  final Dio dio;
+  final RemoteDataSource remoteDataSource;
 
-  TransactionRepositoryImpl(this.dio);
+  TransactionRepositoryImpl({required this.remoteDataSource});
+
 
   @override
-  Future<List<Transaction>> getTransactions() async {
-    final response = await dio.get('/transactions');
-    return (response.data as List)
-        .map((json) => Transaction.fromJson(json))
-        .toList();
+  Future<List<Transaction>> getTransactions() {
+    return remoteDataSource.getTransactions();
   }
 
   @override
-  Future<Transaction> createTransaction(Transaction transaction) async {
-    final response =
-        await dio.post('/transactions', data: transaction.toJson());
-    return Transaction.fromJson(response.data);
+  Future<Transaction> updateTransaction(int id, Transaction transaction) {
+    return remoteDataSource.updateTransaction(id,transaction);
   }
 
   @override
-  Future<Transaction> updateTransaction(int id, Transaction transaction) async {
-    final response =
-        await dio.put('/transactions/$id', data: transaction.toJson());
-    return Transaction.fromJson(response.data);
+  Future<Transaction> createTransaction(Transaction transaction) {
+    return remoteDataSource.createTransaction(transaction);
   }
 
   @override
-  Future<void> deleteTransaction(int id) async {
-    await dio.delete('/transactions/$id');
+  Future<void> deleteTransaction(int id) {
+    return remoteDataSource.deleteTransaction(id);
   }
 }

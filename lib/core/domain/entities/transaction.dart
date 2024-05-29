@@ -1,30 +1,38 @@
 class Transaction {
-  final int id;
-  final String title;
-  final double amount;
-  final String date;
+  final int? id;
+  final String description;
+  final int amount;
+  final String status;
+  final String type;
+  final String? createdAt;
 
   Transaction(
-      {required this.id,
-      required this.title,
+      { this.id,
+      required this.description,
+      required this.status,
+      required this.type,
       required this.amount,
-      required this.date});
+       this.createdAt});
 
   factory Transaction.fromJson(Map<String, dynamic> json) {
     return Transaction(
       id: json['id'],
-      title: json['title'],
+      description: json['description'],
+      status: json['status'],
+      type: json['type'],
       amount: json['amount'],
-      date: json['date'],
+      createdAt: json['created_at'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'title': title,
+      'description': description,
       'amount': amount,
-      'date': date,
+      'status': status,
+      'type': type,
+      'created_at': createdAt,
     };
   }
 }
