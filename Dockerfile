@@ -25,4 +25,4 @@ EXPOSE 3000
 
 
 # Commande pour démarrer l'application Nest.js
-CMD [ "pnpm", "start:prod" ]
+CMD [ "pnpm", "dev" ]
