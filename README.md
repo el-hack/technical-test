@@ -1,5 +1,4 @@
-# buimobile
-# NomDuProjet
+# Bui mobile
 
 Une application de CRUD transaction
 
