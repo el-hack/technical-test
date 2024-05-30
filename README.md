@@ -1,7 +1,7 @@
 # buimobile
 # NomDuProjet
 
-Une brève description de votre projet Flutter.
+Une application de CRUD transaction
 
 ## Table des matières
 
