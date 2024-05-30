@@ -13,7 +13,7 @@ Une application de CRUD transaction
 
 ## Introduction
 
-`NomDuProjet` est une application mobile développée en Flutter. Elle permet de [décrire ce que fait l'application].
+`Bui mobile` est une application mobile développée en Flutter. Elle permet de [décrire ce que fait l'application].
 
 ## Fonctionnalités
 
